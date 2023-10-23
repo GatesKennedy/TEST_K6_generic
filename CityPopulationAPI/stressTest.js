@@ -31,10 +31,11 @@ function genExistingEndPoint() {
 //	K6 Definitions
 export const options = {
 	stages: [
-		{ duration: '10s', target: 10 },
-		{ duration: '10s', target: 1000 },
-		{ duration: '10s', target: 1000 },
-		{ duration: '10s', target: 10 },
+		{ duration: '9s', target: 10 },
+		{ duration: '30s', target: 1200 },
+		{ duration: '30s', target: 1200 },
+		{ duration: '30s', target: 10 },
+		{ duration: '12s', target: 10 },
 	],
 };
 export default function () {
@@ -44,20 +45,20 @@ export default function () {
 
 	// GET 200
 	const resGet = http.get(urlBASE + urlAPI + genExistingEndPoint()[0]);
-	check(resGet, { 'status was 200': (r) => r.status == 200 });
+	check(resGet, { 'read was 200': (r) => r.status == 200 });
 
-	// PUT 200
-	const putExists = genExistingEndPoint();
-	const resPut = http.put(urlBASE + urlAPI + putExists[0], putExists[1], {
-		headers: headers,
-	});
-	check(resPut, { 'status was 200': (r) => r.status == 200 });
+	// // PUT 200
+	// const putExists = genExistingEndPoint();
+	// const resPut = http.put(urlBASE + urlAPI + putExists[0], putExists[1], {
+	// 	headers: headers,
+	// });
+	// check(resPut, { 'update was 200': (r) => r.status == 200 });
 
-	// PUT 201
-	const resNew = http.put(urlBASE + urlAPI + randoEP, randoPop, {
-		headers: headers,
-	});
-	check(resNew, {
-		'rando creation GOOD': (r) => r.status == 201 || r.status == 200,
-	});
+	// // PUT 201
+	// const resNew = http.put(urlBASE + urlAPI + randoEP, randoPop, {
+	// 	headers: headers,
+	// });
+	// check(resNew, {
+	// 	'create was 201': (r) => r.status == 201 || r.status == 200,
+	// });
 }

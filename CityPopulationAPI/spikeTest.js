@@ -32,9 +32,9 @@ function genExistingEndPoint() {
 export const options = {
 	stages: [
 		{ duration: '6s', target: 10 },
-		{ duration: '6s', target: 800 },
-		{ duration: '12s', target: 800 },
-		{ duration: '6s', target: 10 },
+		{ duration: '30s', target: 800 },
+		{ duration: '4m', target: 800 },
+		{ duration: '30s', target: 10 },
 		{ duration: '12s', target: 1 },
 	],
 };
